@@ -3,7 +3,7 @@ import clientBackground from '../assets/client/client sky ls.jpg'
 
 export default function ClientFromData({ data }: { data: HomepageData }) {
   return (
-    <a href="/detail-client" className="block">
+    <a href={`${import.meta.env.BASE_URL}detail-client`} className="block">
       <section
         id="clients"
         className="relative overflow-hidden bg-cover bg-center py-20 text-white transition-opacity duration-200 hover:opacity-95"

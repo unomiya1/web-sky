@@ -4,9 +4,7 @@ import gearBg from '../assets/about us/gear background.jpeg'
 export default function MiniAboutFromData({ data }: { data: HomepageData }) {
   const base = import.meta.env.BASE_URL
 
-  const gearHref =
-    data.nav_links?.find((l) => l.label.toLowerCase().includes('gear'))?.href ??
-    `${base}our-gear`
+  const gearHref = `${base}our-gear`
 
   return (
     <section className="relative py-8">

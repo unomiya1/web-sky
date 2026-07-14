@@ -43,7 +43,7 @@ export default function OurGear() {
       <Navbar
         links={gearLinks}
         bgColor="#0D1B2A"
-        logoHref={`${import.meta.env.BASE_URL}#home`}
+        logoHref={import.meta.env.BASE_URL}
       />
       <main className="pt-60 lg:pt-72">
         <div className="mx-auto max-w-7xl px-6 lg:px-10">

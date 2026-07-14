@@ -14,7 +14,11 @@ export default function Navbar({ links, bgColor, logoHref }: NavbarProps) {
   return (
     <header style={bgColor ? { backgroundColor: bgColor } : undefined} className="absolute inset-x-0 top-0 z-50">
       <nav className="mx-auto flex max-w-7xl items-center justify-between px-6 py-5 lg:px-10">
-        <a href={logoHref ?? '#home'} className="shrink-0 transition-opacity hover:opacity-90">
+        <a href={
+          logoHref
+            ? `${import.meta.env.BASE_URL}${logoHref.replace(/^\//, '')}`
+            : `${import.meta.env.BASE_URL}#home`
+        } className="shrink-0 transition-opacity hover:opacity-90">
           <Logo />
         </a>
 
@@ -40,14 +44,13 @@ export default function Navbar({ links, bgColor, logoHref }: NavbarProps) {
         </button>
 
         <ul
-          className={`${
-            menuOpen ? 'flex' : 'hidden'
-          } absolute left-0 right-0 top-full flex-col gap-4 bg-black/80 px-6 py-6 backdrop-blur-sm lg:static lg:flex lg:flex-row lg:items-center lg:gap-8 lg:bg-transparent lg:p-0 lg:backdrop-blur-none xl:gap-10`}
+          className={`${menuOpen ? 'flex' : 'hidden'
+            } absolute left-0 right-0 top-full flex-col gap-4 bg-black/80 px-6 py-6 backdrop-blur-sm lg:static lg:flex lg:flex-row lg:items-center lg:gap-8 lg:bg-transparent lg:p-0 lg:backdrop-blur-none xl:gap-10`}
         >
           {links.map((link) => (
             <li key={link.href}>
               <a
-                href={link.href}
+                href={`${import.meta.env.BASE_URL}${link.href.replace(/^\//, '')}`}
                 className="text-xs font-semibold tracking-[0.2em] text-white transition-colors hover:text-sky-teal"
                 onClick={() => setMenuOpen(false)}
               >

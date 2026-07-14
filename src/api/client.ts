@@ -2,6 +2,7 @@ import axios from 'axios'
 import type { HomepageData } from '../types/homepage'
 import aboutUsImage from '../assets/about us/about us.jpg'
 
+const BASE_PATH = import.meta.env.BASE_URL
 const api = axios.create({
   baseURL: import.meta.env.VITE_API_URL || '/api',
   headers: {
@@ -219,13 +220,13 @@ export const defaultHomepageData: HomepageData = {
   footer_description: 'Professional production house and digital media communication partner.',
   footer_copy: '© 2026 SKY Pictures Production. All rights reserved.',
   nav_links: [
-    { label: 'HOME', href: '#home' },
-    { label: 'ABOUT US', href: '#about' },
-    { label: 'OUR TEAM', href: '#team' },
-    { label: 'SERVICES', href: '#services' },
-    { label: 'PORTOFOLIO', href: '#portfolio' },
-    { label: 'CLIENTS', href: '#clients' },
-    { label: 'CONTACT', href: '#contact' },
+    { label: 'HOME', href: `${BASE_PATH}#home` },
+    { label: 'ABOUT US', href: `${BASE_PATH}#about` },
+    { label: 'OUR TEAM', href: `${BASE_PATH}#team` },
+    { label: 'SERVICES', href: `${BASE_PATH}#services` },
+    { label: 'PORTOFOLIO', href: `${BASE_PATH}#portfolio` },
+    { label: 'CLIENTS', href: `${BASE_PATH}#clients` },
+    { label: 'CONTACT', href: `${BASE_PATH}#contact` },
   ],
 }
 

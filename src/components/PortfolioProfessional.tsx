@@ -380,7 +380,7 @@ export default function PortfolioProfessional() {
       <Navbar
         links={navLinks}
         bgColor="#0D1B2A"
-        logoHref={`${import.meta.env.BASE_URL}#home`}
+        logoHref={import.meta.env.BASE_URL}
       />
 
       <main className="flex-1 pt-32 pb-0 lg:pt-36 lg:pb-0">
