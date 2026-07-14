@@ -1,10 +1,10 @@
 import { useEffect, useState } from 'react'
 import type { HomepageData } from '../types/homepage'
-import heroImage1 from '../assets/homepage/Alia Hospital.webp'
-import heroImage2 from '../assets/homepage/IMG-20251020-WA0113.webp'
-import heroImage3 from '../assets/homepage/Kementrans2.webp'
-import heroImage4 from '../assets/homepage/Kementrans.webp'
-import heroImage5 from '../assets/homepage/loka sehat.webp'
+import heroImage1 from '../assets/Homepage/Alia Hospital.webp'
+import heroImage2 from '../assets/Homepage/IMG-20251020-WA0113.webp'
+import heroImage3 from '../assets/Homepage/Kementrans2.webp'
+import heroImage4 from '../assets/Homepage/Kementrans.webp'
+import heroImage5 from '../assets/Homepage/loka sehat.webp'
 import Navbar from './Navbar'
 
 interface HeroProps {
