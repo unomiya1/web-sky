@@ -1,6 +1,6 @@
 import axios from 'axios'
 import type { HomepageData } from '../types/homepage'
-import aboutUsImage from '../assets/about us/about us.jpg'
+import aboutUsImage from '../assets/about us/about us1.png'
 
 const BASE_PATH = import.meta.env.BASE_URL
 const api = axios.create({
