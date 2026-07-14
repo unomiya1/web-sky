@@ -70,7 +70,7 @@ export default function PortfolioFromData({ data }: { data: HomepageData }) {
 
             <div className="mt-6 flex justify-center">
               <a
-                href={activeTag === 'Professional video' ? '/porto-professional' : '/portososmed'}
+                href={activeTag === 'Professional video' ? `${import.meta.env.BASE_URL}porto-professional` : `${import.meta.env.BASE_URL}portososmed`}
                 className="inline-flex rounded-full border border-sky-teal bg-sky-teal/10 px-8 py-3 text-sm font-semibold text-sky-teal transition hover:bg-sky-teal/20"
               >
                 View more
