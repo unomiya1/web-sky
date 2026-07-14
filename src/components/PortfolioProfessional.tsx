@@ -43,7 +43,9 @@ export default function PortfolioProfessional() {
   const links = defaultHomepageData.nav_links
   const navLinks = links.map((link) => ({
     ...link,
-    href: link.href.startsWith('#') ? `/${link.href}` : link.href,
+    href: link.href.startsWith('#')
+      ? `${import.meta.env.BASE_URL}${link.href}`
+      : link.href,
   }))
 
   const cards: PortfolioCard[] = [
@@ -375,7 +377,11 @@ export default function PortfolioProfessional() {
 
   return (
     <div className="flex min-h-screen flex-col bg-neutral-50">
-      <Navbar links={navLinks} bgColor="#0D1B2A" logoHref="/#home" />
+      <Navbar
+        links={navLinks}
+        bgColor="#0D1B2A"
+        logoHref={`${import.meta.env.BASE_URL}#home`}
+      />
 
       <main className="flex-1 pt-32 pb-0 lg:pt-36 lg:pb-0">
         <div className="mx-auto max-w-7xl px-6 lg:px-10">
@@ -387,13 +393,13 @@ export default function PortfolioProfessional() {
             <div className="mx-auto mt-3 h-1 w-24 rounded-full bg-sky-teal" />
             <div className="mx-auto mt-6 flex justify-center gap-4">
               <a
-                href="/porto-professional"
+                href={`${import.meta.env.BASE_URL}porto-professional`}
                 className="rounded-full border border-sky-teal/40 bg-sky-teal/10 px-5 py-2 text-sm font-semibold text-sky-teal transition hover:bg-sky-teal/20"
               >
                 Professional video
               </a>
               <a
-                href="/portososmed"
+                href={`${import.meta.env.BASE_URL}portososmed`}
                 className="rounded-full border border-sky-teal/40 bg-sky-teal/10 px-5 py-2 text-sm font-semibold text-sky-teal transition hover:bg-sky-teal/20"
               >
                 Social Media Content

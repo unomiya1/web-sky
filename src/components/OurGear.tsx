@@ -33,12 +33,18 @@ export default function OurGear() {
   const links = defaultHomepageData.nav_links
   const gearLinks = links.map((link) => ({
     ...link,
-    href: link.href.startsWith('#') ? `/${link.href}` : link.href,
+    href: link.href.startsWith('#')
+      ? `${import.meta.env.BASE_URL}${link.href}`
+      : link.href,
   }))
 
   return (
     <div className="min-h-screen bg-neutral-50">
-      <Navbar links={gearLinks} bgColor="#0D1B2A" logoHref="/#home" />
+      <Navbar
+        links={gearLinks}
+        bgColor="#0D1B2A"
+        logoHref={`${import.meta.env.BASE_URL}#home`}
+      />
       <main className="pt-60 lg:pt-72">
         <div className="mx-auto max-w-7xl px-6 lg:px-10">
           <div className="mb-14 text-center">
@@ -49,10 +55,10 @@ export default function OurGear() {
           <div className="grid gap-8 lg:grid-cols-2">
             <div className="flex flex-col gap-4">
               <h2 className="text-xl font-semibold text-gray-900">Tier 1</h2>
-              </div>
+            </div>
             <div className="flex flex-col gap-4">
               <h2 className="text-xl font-semibold text-gray-900 text-right">Tier 2</h2>
-              </div>
+            </div>
           </div>
 
           <div className="mt-10 grid gap-8 lg:grid-cols-2">
@@ -142,10 +148,10 @@ export default function OurGear() {
                     <img src={l16_50} alt="16-50" className="h-24 w-24 object-contain" />
                     <span className="text-sm">Sony 16-50mm f3.5</span>
                   </li>
-                      <li className="flex items-start gap-4">
-                        <img src={l28_70} alt="28-70" className="h-24 w-24 object-contain" />
-                        <span className="text-sm">Sony 28-70mm f3.5</span>
-                      </li>
+                  <li className="flex items-start gap-4">
+                    <img src={l28_70} alt="28-70" className="h-24 w-24 object-contain" />
+                    <span className="text-sm">Sony 28-70mm f3.5</span>
+                  </li>
                 </ul>
               </section>
 

@@ -30,13 +30,15 @@ function App() {
     return () => window.clearTimeout(timer)
   }, [window.location.pathname])
 
-  const content = window.location.pathname === '/our-gear' ? (
+  const path = window.location.pathname.replace(import.meta.env.BASE_URL.slice(0, -1), '')
+
+  const content = path === '/our-gear' ? (
     <OurGear />
-  ) : window.location.pathname === '/porto-professional' || window.location.pathname === '/porto-profesional' ? (
+  ) : path === '/porto-professional' || path === '/porto-profesional' ? (
     <PortfolioProfessional />
-  ) : window.location.pathname === '/portososmed' ? (
+  ) : path === '/portososmed' ? (
     <Portososmed />
-  ) : window.location.pathname === '/detail-client' ? (
+  ) : path === '/detail-client' ? (
     <DetailClient />
   ) : (
     <>

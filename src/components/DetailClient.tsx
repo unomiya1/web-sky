@@ -25,12 +25,14 @@ const years = yearOrder.filter((year) => (groupedClientImages[year] ?? []).lengt
 export default function DetailClient() {
   const links = defaultHomepageData.nav_links.map((link) => ({
     ...link,
-    href: link.href.startsWith('#') ? `/${link.href}` : link.href,
+    href: link.href.startsWith('#')
+      ? `${import.meta.env.BASE_URL}${link.href}`
+      : link.href,
   }))
 
   return (
     <div className="min-h-screen bg-[#f5f7fb] text-slate-800">
-      <Navbar links={links} bgColor="#0D1B2A" logoHref="/#home" />
+      <Navbar links={links} bgColor="#0D1B2A" logoHref={`${import.meta.env.BASE_URL}#home`} />
 
       <main className="pt-44 lg:pt-56 pb-0">
         <section className="mx-auto max-w-7xl px-6 lg:px-10 mb-16">
