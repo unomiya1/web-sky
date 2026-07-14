@@ -1,7 +1,7 @@
 import type { HomepageData } from '../types/homepage'
 import gearBg from '../assets/about us/gear background.jpeg'
 
-export default function MiniAboutFromData({ data }: { data: HomepageData }) {
+export default function MiniAboutFromData({ }: { data: HomepageData }) {
   const base = import.meta.env.BASE_URL
 
   const gearHref = `${base}our-gear`
