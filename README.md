@@ -1,32 +1,24 @@
-# React + TypeScript + Vite
+Ini dokumentasi nya emang agak berantakan.
 
-This template provides a minimal setup to get React working in Vite with HMR and some Oxlint rules.
+tapi intinya semua componen udah pada tempatnya.
 
-Currently, two official plugins are available:
+Image, Video, dan GIF bisa ditaruh dulu dibagian
+src/assets/
+Semua assets ada disini kalo mau ditambah ato diganti buat salah satu page
+tinggal masukin ke folder, import di page yang mau dituju.
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Oxc](https://oxc.rs)
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/)
+Semua page editing ada di
+src/components/
+buat edit page nantiya semuanya ada di directory itu
 
-## React Compiler
+buat ngedit deskripsi semua yang ada di website
+masuknya ke Client.ts
+agak aneh emang dimasukin disitu soalnya plan awal ini mau dipasang laravel
+tapi karena ini jatohnya web statis jadinya ga kepake. Mungkin kedepannya kalo
+ternyata mau dijadiin web daily update gitu bisa dipake tinggal disambung ke laravel aja
+sama beberapa part yang local tinggal di sambungin sama backendnya.
 
-The React Compiler is not enabled on this template because of its impact on dev & build performances. To add it, see [this documentation](https://react.dev/learn/react-compiler/installation).
+Kalo ada apa-apa atau mau nanya-nanya bisa langsung tanya aja nanti.
 
-## Expanding the Oxlint configuration
-
-If you are developing a production application, we recommend enabling type-aware lint rules by installing `oxlint-tsgolint` and editing `.oxlintrc.json`:
-
-```json
-{
-  "$schema": "./node_modules/oxlint/configuration_schema.json",
-  "plugins": ["react", "typescript", "oxc"],
-  "options": {
-    "typeAware": true
-  },
-  "rules": {
-    "react/rules-of-hooks": "error",
-    "react/only-export-components": ["warn", { "allowConstantExport": true }]
-  }
-}
-```
-
-See the [Oxlint rules documentation](https://oxc.rs/docs/guide/usage/linter/rules) for the full list of rules and categories.
+Note:
+Kalo pull requestnya aneh-aneh ato berpotensi shutdown in ini web tanggung sendiri.
