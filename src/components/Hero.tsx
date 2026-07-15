@@ -5,13 +5,27 @@ import heroImage2 from '../assets/Homepage/IMG-20251020-WA0113.webp'
 import heroImage3 from '../assets/Homepage/Kementrans2.webp'
 import heroImage4 from '../assets/Homepage/Kementrans.webp'
 import heroImage5 from '../assets/Homepage/loka sehat.webp'
+import heroImage6 from '../assets/Homepage/6.jpg'
+import heroImage7 from '../assets/Homepage/7.jpg'
+import heroImage8 from '../assets/Homepage/8.jpg'
+import heroImage9 from '../assets/Homepage/9.jpg'
+import heroImage10 from '../assets/Homepage/10.jpg'
+import heroImage11 from '../assets/Homepage/11.jpg'
+import heroImage12 from '../assets/Homepage/12.jpg'
+import heroImage13 from '../assets/Homepage/13.jpg'
+import heroImage14 from '../assets/Homepage/14.jpg'
+import heroImage15 from '../assets/Homepage/15.jpg'
 import Navbar from './Navbar'
 
 interface HeroProps {
   data: HomepageData
 }
 
-const heroImages = [heroImage1, heroImage2, heroImage3, heroImage4, heroImage5]
+const heroImages = [
+  heroImage1, heroImage2, heroImage3, heroImage4, heroImage5,
+  heroImage6, heroImage7, heroImage8, heroImage9, heroImage10,
+  heroImage11, heroImage12, heroImage13, heroImage14, heroImage15,
+]
 
 export default function Hero({ data }: HeroProps) {
   const [activeImageIndex, setActiveImageIndex] = useState(0)
