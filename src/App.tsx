@@ -12,6 +12,7 @@ import PortfolioFromData from './components/Portfolio'
 import ClientFromData from './components/Client'
 import ContactFooter from './components/ContactFooter'
 import DetailClient from './components/DetailClient'
+import DCP from './components/DCP'
 import type { HomepageData } from './types/homepage'
 
 function App() {
@@ -38,6 +39,8 @@ function App() {
     <PortfolioProfessional />
   ) : path === '/portososmed' ? (
     <Portososmed />
+  ) : path === '/dcp' ? (
+    <DCP />
   ) : path === '/detail-client' ? (
     <DetailClient />
   ) : (

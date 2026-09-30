@@ -11,6 +11,8 @@ import cpImage from '../assets/services/non series/cp.jpg'
 import lmcImage from '../assets/services/non series/lmc.jpg'
 import ytImage from '../assets/services/series/yt.jpg'
 import tvImage from '../assets/services/series/tv.jpg'
+import dcpImage from '../assets/services/DCP/dcp.jpg'
+import dcpBgImage from '../assets/services/DCP/dcp-bg.jpg'
 import { useInView } from '../hooks/useInView'
 
 const nonSeriesImages: Record<string, string> = {
@@ -99,29 +101,94 @@ function ServiceCard({
   )
 }
 
+function DCPCard() {
+  const [ref, inView] = useInView(0.1)
+  const basePath = import.meta.env.BASE_URL
+
+  return (
+    <article
+      ref={ref as React.RefObject<HTMLElement>}
+      className={`group relative overflow-hidden rounded-3xl border border-white/10 bg-slate-950/90 shadow-xl shadow-slate-950/20 transition-all duration-500 ease-out hover:-translate-y-2 hover:border-sky-teal/40 hover:shadow-2xl hover:shadow-sky-teal/10 animate-from-bottom ${inView ? 'in-view' : ''}`}
+    >
+      {/* Background image with 30% blur - interactive like Non Series */}
+      <div className="pointer-events-none absolute inset-0 opacity-0 transition duration-500 group-hover:opacity-100">
+        <img
+          src={dcpImage}
+          alt="Digital Cinema Package"
+          className="h-full w-full object-cover opacity-90"
+          style={{ filter: 'blur(8px)' }}
+        />
+        <div className="absolute inset-0 bg-slate-950/60" />
+      </div>
+
+      <div className="relative z-10 flex flex-col items-center p-8 text-center sm:p-10">
+        {/* Image preview - only visible on hover */}
+        <div className="mb-8 w-full overflow-hidden rounded-2xl opacity-0 transition-all duration-500 group-hover:opacity-100">
+          <img
+            src={dcpImage}
+            alt="Digital Cinema Package"
+            className="h-48 w-full object-cover transition-transform duration-500 group-hover:scale-110 sm:h-56"
+          />
+        </div>
+
+        {/* Title */}
+        <div className="mb-6">
+          <p className="text-sm uppercase tracking-[0.48em] text-sky-teal">DCP</p>
+          <h3 className="mt-3 text-2xl font-semibold text-white sm:text-3xl">Digital Cinema Package</h3>
+        </div>
+
+        {/* Description (replaces price) */}
+        <p className="mb-8 max-w-md text-sm leading-relaxed text-slate-300 sm:text-base">
+          Convert your video into a standard format for cinema screen playback, ready for various professional applications.
+        </p>
+
+        {/* View Detail button */}
+        <a
+          href={`${basePath}dcp`}
+          className="inline-flex items-center gap-2 rounded-full border border-sky-teal/50 bg-sky-teal/10 px-6 py-3 text-sm font-semibold text-sky-teal transition-all duration-300 hover:border-sky-teal hover:bg-sky-teal hover:text-white hover:shadow-lg hover:shadow-sky-teal/25"
+        >
+          View Detail
+          <svg xmlns="http://www.w3.org/2000/svg" className="h-4 w-4 transition-transform duration-300 group-hover:translate-x-1" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2}>
+            <path strokeLinecap="round" strokeLinejoin="round" d="M13 7l5 5m0 0l-5 5m5-5H6" />
+          </svg>
+        </a>
+      </div>
+    </article>
+  )
+}
+
 export default function ServicesFromData({ data }: { data: HomepageData }) {
-  const [activeTab, setActiveTab] = useState<'Package' | 'Series' | 'Non Series'>('Package')
+  const [activeTab, setActiveTab] = useState<'Package' | 'Series' | 'Non Series' | 'DCP'>('Package')
   const [hoveredBackground, setHoveredBackground] = useState<string | null>(null)
   const activePackages =
     activeTab === 'Package'
       ? data.services_packages
       : activeTab === 'Series'
         ? data.services_series
-        : data.services_non_series
+        : activeTab === 'Non Series'
+          ? data.services_non_series
+          : []
 
   return (
     <section
       id="services"
-      className={`relative overflow-hidden py-16 text-white ${activeTab === 'Package' ? 'bg-[rgba(15,23,42,0.50)]' : 'bg-neutral-900'
+      className={`relative overflow-hidden py-16 text-white ${activeTab === 'Package' || activeTab === 'DCP' ? 'bg-[rgba(15,23,42,0.50)]' : 'bg-neutral-900'
         }`}
       style={
         activeTab === 'Package'
           ? { backgroundImage: `url(${packageBg})`, backgroundSize: 'cover', backgroundPosition: 'center', backgroundRepeat: 'no-repeat' }
-          : undefined
+          : activeTab === 'DCP'
+            ? { backgroundImage: `url(${dcpBgImage})`, backgroundSize: 'cover', backgroundPosition: 'center', backgroundRepeat: 'no-repeat' }
+            : undefined
       }
     >
       {activeTab === 'Package' && <div className="absolute inset-0 bg-slate-950/75" />}
-      {activeTab !== 'Package' && hoveredBackground && (
+      {activeTab === 'DCP' && (
+        <div className="absolute inset-0">
+          <div className="absolute inset-0 bg-slate-950/65" style={{ backdropFilter: 'blur(8px)', WebkitBackdropFilter: 'blur(8px)' }} />
+        </div>
+      )}
+      {activeTab !== 'Package' && activeTab !== 'DCP' && hoveredBackground && (
         <div className="pointer-events-none absolute inset-0 overflow-hidden">
           <img
             src={hoveredBackground}
@@ -144,7 +211,7 @@ export default function ServicesFromData({ data }: { data: HomepageData }) {
             <button
               key={label}
               type="button"
-              onClick={() => setActiveTab(label as 'Package' | 'Series' | 'Non Series')}
+              onClick={() => setActiveTab(label as 'Package' | 'Series' | 'Non Series' | 'DCP')}
               className={`rounded-full border px-4 py-2 text-sm font-semibold transition ${activeTab === label
                 ? 'border-sky-teal bg-sky-teal text-white'
                 : 'border-white/20 bg-white/10 text-white/80 hover:bg-white/20'
@@ -155,33 +222,40 @@ export default function ServicesFromData({ data }: { data: HomepageData }) {
           ))}
         </div>
 
-        <div className={`grid gap-6 ${activeTab === 'Package'
-          ? 'grid-cols-1 sm:grid-cols-2 lg:grid-cols-3'
-          : activeTab === 'Series'
-            ? 'grid-cols-1 sm:grid-cols-2 lg:grid-cols-2'
-            : 'grid-cols-1 sm:grid-cols-2 lg:grid-cols-4'
-          }`}>
-          {activePackages.map((service, idx) => {
-            const seriesHoverImage = activeTab === 'Series' ? getSeriesHoverImage(service.name) : undefined
-            const nonSeriesHoverImage = activeTab === 'Non Series' ? nonSeriesImages[service.name] : undefined
-            return (
-              <ServiceCard
-                key={service.name}
-                service={service}
-                index={idx}
-                activeTab={activeTab}
-                nonSeriesHoverImage={nonSeriesHoverImage}
-                seriesHoverImage={seriesHoverImage}
-                onMouseEnter={() => {
-                  const targetImage = activeTab === 'Series' ? seriesHoverImage : nonSeriesHoverImage
-                  if (targetImage) setHoveredBackground(targetImage)
-                }}
-                onMouseLeave={() => setHoveredBackground(null)}
-              />
-            )
-          })}
-        </div>
+        {activeTab === 'DCP' ? (
+          <div className="mx-auto max-w-xl">
+            <DCPCard />
+          </div>
+        ) : (
+          <div className={`grid gap-6 ${activeTab === 'Package'
+            ? 'grid-cols-1 sm:grid-cols-2 lg:grid-cols-3'
+            : activeTab === 'Series'
+              ? 'grid-cols-1 sm:grid-cols-2 lg:grid-cols-2'
+              : 'grid-cols-1 sm:grid-cols-2 lg:grid-cols-4'
+            }`}>
+            {activePackages.map((service, idx) => {
+              const seriesHoverImage = activeTab === 'Series' ? getSeriesHoverImage(service.name) : undefined
+              const nonSeriesHoverImage = activeTab === 'Non Series' ? nonSeriesImages[service.name] : undefined
+              return (
+                <ServiceCard
+                  key={service.name}
+                  service={service}
+                  index={idx}
+                  activeTab={activeTab}
+                  nonSeriesHoverImage={nonSeriesHoverImage}
+                  seriesHoverImage={seriesHoverImage}
+                  onMouseEnter={() => {
+                    const targetImage = activeTab === 'Series' ? seriesHoverImage : nonSeriesHoverImage
+                    if (targetImage) setHoveredBackground(targetImage)
+                  }}
+                  onMouseLeave={() => setHoveredBackground(null)}
+                />
+              )
+            })}
+          </div>
+        )}
       </div>
     </section>
   )
 }
+

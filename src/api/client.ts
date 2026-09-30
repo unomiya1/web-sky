@@ -23,7 +23,7 @@ export const defaultHomepageData: HomepageData = {
     'PT Langit Bintang Kreasi, known as Sky Pictures, is a professional production house and 360° digital media communication company. Established in early 2015, Sky Pictures specializes in end-to-end content production for YouTube, Instagram, and television, covering TV series, non-TV productions, and brand video content, delivered with strong storytelling and strategic digital communication.',
   about_image: aboutUsImage,
   services_title: 'Services',
-  services_option_labels: ['Package', 'Series', 'Non Series'],
+  services_option_labels: ['Package', 'Series', 'Non Series', 'DCP'],
   services_packages: [
     {
       name: 'BASIC',
