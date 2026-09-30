@@ -429,7 +429,13 @@ function SpecsSection() {
   )
 }
 
-function HeroSection({ heroInView, heroRef, whatsappLink }: { heroInView: boolean; heroRef: React.RefObject<Element> | ((node: Element | null) => void); whatsappLink: string }) {
+  function HeroSection({
+  heroInView,
+  heroRef,
+}: {
+  heroInView: boolean;
+  heroRef: React.RefObject<HTMLElement | null> | ((node: HTMLElement | null) => void);
+}) {  
   const [currentImageIndex, setCurrentImageIndex] = useState(0)
 
   useEffect(() => {
@@ -533,7 +539,10 @@ export default function DCP() {
 
       <main className="flex-1">
         {/* Hero Section */}
-        <HeroSection heroInView={heroInView} heroRef={heroRef} whatsappLink={whatsappLink} />
+        <HeroSection
+          heroInView={heroInView}
+          heroRef={heroRef}
+        />
 
         {/* Features Section */}
         <section className="bg-neutral-50 py-20 lg:py-28">
